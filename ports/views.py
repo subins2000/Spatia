@@ -1,5 +1,11 @@
 from django.shortcuts import render
 
+from rest_framework import generics
+
+from .models import Port
+from .permissions import IsPortOrg
+from .serializers import PortSerializer
+
 
 class Ports(generics.ListCreateAPIView):
     """Get/Add request
@@ -9,8 +15,8 @@ class Ports(generics.ListCreateAPIView):
     Add info about a spaceport
     """
 
-    serializer_class = LaunchSerializer
-    queryset = Launch.objects.all()
+    serializer_class = PortSerializer
+    queryset = Port.objects.all()
 
 
 class PortView(generics.RetrieveUpdateAPIView):
@@ -21,10 +27,10 @@ class PortView(generics.RetrieveUpdateAPIView):
     lookup_url_kwarg = 'id'
 
     permission_classes = (
-        IsSpaceOrg,
+        IsPortOrg,
     )
 
     def get_queryset(self):
         id = self.kwargs.get(self.lookup_url_kwarg)
-        launch = Launch.objects.filter(id=id)
-        return launch
+        port = Port.objects.filter(id=id)
+        return port

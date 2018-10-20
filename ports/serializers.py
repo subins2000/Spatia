@@ -1,7 +1,7 @@
 from django_countries.serializers import CountryFieldMixin
 from rest_framework import serializers
 
-from .models import Launch
+from .models import Port
 
 
 class PortSerializer(CountryFieldMixin, serializers.ModelSerializer):

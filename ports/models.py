@@ -1,5 +1,7 @@
 from django.db import models
 
+from django_countries.fields import CountryField
+
 
 class Port(models.Model):
 
@@ -18,4 +20,13 @@ class Port(models.Model):
     lng = models.DecimalField(
         max_digits=9,
         decimal_places=6
+    )
+
+    website = models.CharField(
+        blank=True,
+        max_length=100,
+    )
+
+    viewpoints = models.CharField(
+        max_length=100,
     )
