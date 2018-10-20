@@ -1,6 +1,7 @@
 from django.db import models
-
 from django_countries.fields import CountryField
+
+from ports.models import Port
 
 
 class Launch(models.Model):
@@ -18,20 +19,12 @@ class Launch(models.Model):
         max_length=100,
         help_text='Name of rocket',
     )
+    port = models.ForeignKey(
+        Port,
+        on_delete=models.CASCADE,
+    )
 
-    location = models.CharField(
-        max_length=100,
-        help_text='Location'
-    )
     country = CountryField()
-    lat = models.DecimalField(
-        max_digits=9,
-        decimal_places=6
-    )
-    lng = models.DecimalField(
-        max_digits=9,
-        decimal_places=6
-    )
 
     when = models.DateTimeField()
 
