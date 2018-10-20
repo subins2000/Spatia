@@ -38,6 +38,7 @@ urlpatterns = [
     path('api/', index),
     path('api/accounts/', include('accounts.urls')),
     path('api/launches/', include('launches.urls')),
+    path('api/ports/', include('ports.urls')),
     url(
         '^docs/$',
         schema_view.with_ui('swagger', cache_timeout=0),
