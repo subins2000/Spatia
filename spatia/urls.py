@@ -14,8 +14,31 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf.urls import url
+from django.urls import include, path
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view
+
+from spatia.views import index
+
+
+schema_view = get_schema_view(
+    openapi.Info(
+        title='Spatia API',
+        default_version='v0.1',
+        description='Spatia API https://github.com/subins2000/Spatia',
+        license=openapi.License(name='GPL-3.0'),
+    ),
+    validators=['flex', 'ssv'],
+    public=True,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/', index),
+    url(
+        '^docs/$',
+        schema_view.with_ui('swagger', cache_timeout=0),
+        name='schema-swagger-ui'
+    ),
 ]
