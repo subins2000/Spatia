@@ -32,3 +32,13 @@ class Launch(models.Model):
         max_digits=9,
         decimal_places=6
     )
+
+    when = models.DateTimeField()
+
+    payload = models.CharField(
+        max_length=100,
+    )
+
+    destination = models.CharField(
+        max_length=100,
+    )
