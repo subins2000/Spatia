@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import generics
+from rest_framework import generics, filters
 
 from .models import Launch
 from .permissions import IsSpaceOrg
@@ -16,6 +16,10 @@ class Launches(generics.ListCreateAPIView):
 
     serializer_class = LaunchSerializer
     queryset = Launch.objects.all()
+
+    filter_backends = (
+        filters.OrderingFilter,
+    )
 
 
 class LaunchView(generics.RetrieveUpdateAPIView):
