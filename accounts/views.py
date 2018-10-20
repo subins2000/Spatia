@@ -61,9 +61,10 @@ class UserInfo(RetrieveUpdateAPIView):
         return user
 
     def get_serializer_class(self):
-        user = User.objects.get(username=self.request.user.username)
+        if (self.request.user.is_authenticated()):
+            user = User.objects.get(username=self.request.user.username)
 
-        if user.role == 'admin':
-            return UserSerializer
-        else:
-            return UserSerializerBasic
+            if user.role == 'admin':
+                return UserSerializer
+
+        return UserSerializerBasic
