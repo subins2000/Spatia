@@ -28,5 +28,6 @@ class Port(models.Model):
     )
 
     viewpoints = models.CharField(
+        blank=True,
         max_length=100,
     )

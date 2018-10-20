@@ -1,6 +1,5 @@
 from django.shortcuts import render
-
-from rest_framework import generics
+from rest_framework import generics, filters
 
 from .models import Port
 from .permissions import IsPortOrg
@@ -17,6 +16,10 @@ class Ports(generics.ListCreateAPIView):
 
     serializer_class = PortSerializer
     queryset = Port.objects.all()
+
+    filter_backends = (
+        filters.OrderingFilter,
+    )
 
 
 class PortView(generics.RetrieveUpdateAPIView):
