@@ -1,0 +1,15 @@
+.atom
+*.sqlite3
+env
+node_modules
+workspace.sh
+.mypy_cache
+
+# ------
+# Python
+# ------
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
