@@ -35,3 +35,9 @@ class Launch(models.Model):
     destination = models.CharField(
         max_length=100,
     )
+
+    livestream = models.CharField(
+        max_length=300,
+        blank=True,
+        help_text='Link to livestream'
+    )

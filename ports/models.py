@@ -14,12 +14,12 @@ class Port(models.Model):
     )
     country = CountryField()
     lat = models.DecimalField(
-        max_digits=9,
-        decimal_places=6
+        max_digits=13,
+        decimal_places=10
     )
     lng = models.DecimalField(
-        max_digits=9,
-        decimal_places=6
+        max_digits=13,
+        decimal_places=10,
     )
 
     website = models.CharField(
